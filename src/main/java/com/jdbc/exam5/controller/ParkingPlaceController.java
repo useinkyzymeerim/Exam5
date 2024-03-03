@@ -125,6 +125,17 @@ public class ParkingPlaceController {
         }
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Reserve created successfully ",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = String.class))}),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Failed to add reservation to database")
+    })
+    @Operation(summary = "This road creates reservation")
     @PostMapping("/reserveParkingPlace")
     public ResponseEntity<String> reservePlace(@RequestBody UnionParkingPlaceDto reservePlace){
         try{
@@ -134,6 +145,18 @@ public class ParkingPlaceController {
         }
     }
 
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "You have release place successfully ",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = String.class))}),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Failed to release place")
+    })
+    @Operation(summary = "This road is using for releasing parking place")
     @PutMapping("/release")
     public ResponseEntity<String> takePlace(@RequestBody UnionParkingPlaceDto takePlace){
         try {
